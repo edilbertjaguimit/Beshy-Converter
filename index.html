@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beshy Converter</title>
+    <link rel="icon" href="https://em-content.zobj.net/thumbs/240/facebook/355/man-cartwheeling_1f938-200d-2642-fe0f.png" type="image/png">
+    <style>
+        body {
+            box-sizing: 0;
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        #main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        #main {
+            background-color: #091C34;
+            padding: 20px;
+            width: 400px;
+            height: 500px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #main>div {
+            width: 100%;
+        }
+
+        .title {
+            text-align: center;
+            color: #fff;
+            margin-bottom: -100px;
+        }
+
+        .textToConvertInput {
+            padding: 5px;
+            margin-top: 80px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: 20px;
+            height: 80px;
+            width: 94.5%;
+            border-radius: 5px;
+        }
+
+        input[type=submit] {
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #ff00f7;
+            color: #FFF;
+            font-weight: bold;
+        }
+        input[type=submit]:hover{
+            background-color: #f9a5f6;
+        }
+
+        .textConvertedOutput {
+            padding: 5px;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .social-link i {
+            color: #091C34;
+            text-align: center;
+            font-size: 20px;
+            margin: 2px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .fa-copy {
+            font-size: 25px;
+            cursor: pointer;
+            color: #ff00f7;
+        }
+        .fa-copy:hover{
+            color: #f9a5f6;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        @media (max-width: 800px) {
+            body {
+                background-color: #091C34;
+            }
+            #main-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 85vh;
+                width: 100%;
+            }
+            #main {
+                background-color: #091C34;
+                padding: 20px;
+                width: 400px;
+                height: 500px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                border-radius: 10px;
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+            }
+
+            .footer>p {
+                color: #FFF;
+            }
+
+            .social-link i {
+                color: #FFF;
+                text-align: center;
+                font-size: 20px;
+                margin: 2px;
+            }
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/351bf4e5ac.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="main">
+            <div class="title">
+                <h2>🤸‍♀️Beshy🤸‍♀️Converter🤸‍♀️</h2>
+            </div>
+
+            <div class="textToConvertInput">
+                <h3 style="color: #fff;">Text to convert</h3>
+                <textarea name="" id="txtConvert" cols="30" rows="10"></textarea>
+                <input type="submit" id="btnConvert" value="Convert" onclick="Convert()">
+                <input type="submit" id="btnClear" value="Clear" onclick="Clear()">
+            </div>
+
+            <div class="textConvertedOutput">
+                <h3 style="color: #fff;">Converted text</h3>
+                <textarea name="" id="txtOutput" cols="30" rows="10"></textarea>
+                <i class="fa fa-copy" id="btnCopy" onclick="Copy()"></i>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Created by <span>Edilbert Jaguimit</span></p>
+        <div class="social-link">
+            <a href="https://www.facebook.com/edilbertchris.jaguimit"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://github.com/ZxBaymax"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/edilbertjaguimit/"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        var inputTextarea = document.getElementById("txtConvert");
+        var outputTextarea = document.getElementById("txtOutput");
+
+        function Convert() {
+            if (inputTextarea.value != "") {
+                var lastIndex = inputTextarea.value + " ";
+                var inputValue = lastIndex.replace(/\s+/g, " 🤸‍♀️ ");
+                outputTextarea.value = inputValue;
+            }
+        };
+
+        function Copy() {
+            var range = document.createRange();
+            range.selectNode(outputTextarea);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            Swal.fire({
+                icon: 'success',
+                title: 'Text copied successfully.',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        };
+
+        function Clear() {
+            inputTextarea.value = "";
+            outputTextarea.value = "";
+        };
+    </script>
+
+</body>
+
+</html>
