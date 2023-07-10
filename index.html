@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beshy Converter</title>
-    <link rel="icon" href="https://em-content.zobj.net/thumbs/240/facebook/355/man-cartwheeling_1f938-200d-2642-fe0f.png" type="image/png">
+    <link rel="icon"
+        href="https://em-content.zobj.net/thumbs/240/facebook/355/man-cartwheeling_1f938-200d-2642-fe0f.png"
+        type="image/png">
     <style>
         body {
             box-sizing: 0;
@@ -66,7 +68,8 @@
             color: #FFF;
             font-weight: bold;
         }
-        input[type=submit]:hover{
+
+        input[type=submit]:hover {
             background-color: #f9a5f6;
         }
 
@@ -97,7 +100,8 @@
             cursor: pointer;
             color: #ff00f7;
         }
-        .fa-copy:hover{
+
+        .fa-copy:hover {
             color: #f9a5f6;
         }
 
@@ -113,6 +117,7 @@
             body {
                 background-color: #091C34;
             }
+
             #main-container {
                 display: flex;
                 justify-content: center;
@@ -120,6 +125,7 @@
                 height: 85vh;
                 width: 100%;
             }
+
             #main {
                 background-color: #091C34;
                 padding: 20px;
@@ -135,6 +141,14 @@
 
             .footer>p {
                 color: #FFF;
+            }
+
+            input[type=submit]:active {
+                background-color: #f9a5f6;
+            }
+
+            .fa-copy:active {
+                color: #f9a5f6;
             }
 
             .social-link i {
@@ -185,8 +199,7 @@
 
         function Convert() {
             if (inputTextarea.value != "") {
-                var lastIndex = inputTextarea.value + " ";
-                var inputValue = lastIndex.replace(/\s+/g, " 🤸‍♀️ ");
+                var inputValue = inputTextarea.value.replace(/\s+/g, " 🤸‍♀️ ");
                 outputTextarea.value = inputValue;
             }
         };
